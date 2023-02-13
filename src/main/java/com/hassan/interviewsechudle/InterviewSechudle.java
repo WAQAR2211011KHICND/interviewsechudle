@@ -1,13 +1,13 @@
 package com.hassan.interviewsechudle;
+import java.sql.Date;
 
-// import jakarta.annotation.Generated;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
-@Table(name="interview_list")
+@Table(name="interviews")
 @Getter
 
 public class InterviewSechudle {
@@ -16,28 +16,24 @@ public class InterviewSechudle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Setter
-    private int job_id;
+    private int jobId;
     @Setter
-    private int candidate_id;
+    private int interviewer_id;
     @Setter
-    private String interview_date;
+    private String interviewer_name;
+    @Setter
+    private int candidateId;
+    @Setter
+    @Column(columnDefinition = "date")
+    private Date interview_date;
     @Setter
     private String interview_time;
-
-    // public InterviewSechudle(){
-
-    // }
-    
-    // public InterviewSechudle(int id, int job_id, int candidate_id, String interview_date,String interview_time){
-    //     this.id = id;
-    //     this.job_id = job_id;
-    //     this.candidate_id = candidate_id;
-    //     this.interview_date = interview_date;
-    //     this.interview_time = interview_time;
-    // }
-
-
-    
+    @Setter
+    private int status;
+    @Setter
+    private String interviewer_feedback;
+    @Setter
+    private String candidate_feedback;
 
 }
 

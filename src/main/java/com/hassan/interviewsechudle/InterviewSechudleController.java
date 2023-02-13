@@ -1,6 +1,7 @@
 package com.hassan.interviewsechudle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,33 +9,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@RequestMapping("/interview")//http://localhost:8080/interview
+@CrossOrigin("*")
+@RequestMapping("/interview")
 public class InterviewSechudleController {
     
     @Autowired
-    IInterviewSechudle repo;
+    private IInterviewSechudleRepository repo;
 
     @GetMapping("")
     public List<InterviewSechudle> getAll(){
         return repo.findAll();
-    } 
+    }
+    
+    @GetMapping("/getByJob/{job_id}")
+    public List<InterviewSechudle> getByJobId(@PathVariable int job_id){
+        return repo.findByJobId(job_id);
+    }
 
-    // public InterviewSechudleController(){
-    //     repo = new InterviewSechudleRepository();
-    // }
+    @GetMapping("/getByCandidate/{candidate_id}")
+    public List<InterviewSechudle> getByCandidateId(@PathVariable int candidate_id){
+        return repo.findByCandidateId(candidate_id);
+    }
 
-    // @GetMapping("")
-    // public Collection<InterviewSechudle> viewAll(){
-    //     return repo.viewAll();
-    // }
-
-    // @GetMapping("{id}")
+    // @GetMapping("/{id}")
     // public InterviewSechudle viewSingle(@PathVariable int id){
     //     return repo.viewSingle(id);
     // }
@@ -42,7 +44,7 @@ public class InterviewSechudleController {
     @PostMapping("")
     public String addinterview(@RequestBody InterviewSechudle interview){
         repo.save(interview);
-        return "Interview Sechudled "+interview.getId();
+        return "Interview Sechudled";
     }
 
     @PutMapping("")
