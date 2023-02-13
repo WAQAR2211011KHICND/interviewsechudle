@@ -18,6 +18,8 @@ public class InterviewSechudle {
     @Setter
     private int jobId;
     @Setter
+    private String jobTitle;
+    @Setter
     private int interviewer_id;
     @Setter
     private String interviewer_name;
