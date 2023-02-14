@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IInterviewSechudleRepository extends JpaRepository<InterviewSechudle,Long >{
     public List<InterviewSechudle> findByJobId(int job_id);
     public List<InterviewSechudle> findByCandidateId(int candidate_id);
+    public List<InterviewSechudle> findByInterviewerId(int interviewer_id);
 }

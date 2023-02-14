@@ -36,10 +36,15 @@ public class InterviewSechudleController {
         return repo.findByCandidateId(candidate_id);
     }
 
-    // @GetMapping("/{id}")
-    // public InterviewSechudle viewSingle(@PathVariable int id){
-    //     return repo.viewSingle(id);
-    // }
+    @GetMapping("/getByInterviewer/{interviewer_id}")
+    public List<InterviewSechudle> getByInterviewerId(@PathVariable int interviewer_id){
+        return repo.findByInterviewerId(interviewer_id);
+    }
+
+    @GetMapping("/{id}")
+    public InterviewSechudle viewSingle(@PathVariable Long id){
+        return repo.findById(id).orElse(null);
+    }
 
     @PostMapping("")
     public String addinterview(@RequestBody InterviewSechudle interview){

@@ -20,7 +20,7 @@ public class InterviewSechudle {
     @Setter
     private String jobTitle;
     @Setter
-    private int interviewer_id;
+    private int interviewerId;
     @Setter
     private String interviewer_name;
     @Setter
