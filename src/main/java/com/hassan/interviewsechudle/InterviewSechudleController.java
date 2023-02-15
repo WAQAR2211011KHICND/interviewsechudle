@@ -54,7 +54,14 @@ public class InterviewSechudleController {
 
     @PutMapping("")
     public String updateinterview( @RequestBody InterviewSechudle interview){
-        repo.save(interview);
+        InterviewSechudle interviewSchedule = repo.findById(interview.getId()).orElse(null);
+        if(interviewSchedule != null){
+            interviewSchedule.setStatus(interview.getStatus());
+            if(interview.getInterviewer_feedback() != null) interviewSchedule.setInterviewer_feedback(interview.getInterviewer_feedback());
+            if(interview.getCandidate_feedback() != null) interviewSchedule.setCandidate_feedback(interview.getCandidate_feedback());
+            if(interview.getStatus() != 0) interviewSchedule.setStatus(interview.getStatus());
+            repo.save(interviewSchedule);
+        } 
         return "Interview Updated "+interview.getId();
     }
 
