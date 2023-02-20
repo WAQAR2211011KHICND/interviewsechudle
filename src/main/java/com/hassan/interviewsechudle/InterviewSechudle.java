@@ -24,6 +24,8 @@ public class InterviewSechudle {
     @Setter
     private String interviewer_name;
     @Setter
+    private String candidate_name;
+    @Setter
     private int candidateId;
     @Setter
     @Column(columnDefinition = "date")
